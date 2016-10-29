@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hotel | System</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/formValidation.min.css">
+    <link rel="stylesheet" href="../../css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="../../css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../../css/skin-yellow-light.min.css">
+    <link rel="stylesheet" href="../../css/chosen.min.css">
+    <link rel="stylesheet" href="../../css/pnotify.min.css" media="all" type="text/css" />
+  </head>
+  <body class="skin-yellow-light sidebar-mini sidebar-collapse">
+    <div class="wrapper">
+      <header class="main-header">
+        <a href="#" data-href="../principal/menu" class="logo enlace">
+          <span class="logo-mini" style="font-size: 30px;"><i class="glyphicon glyphicon-align-justify"></i></span>
+          <span class="logo-lg"><b><i class="glyphicon glyphicon-home"></i> Hotel Segovia</b></span>
+        </a>
+        <nav class="navbar navbar-static-top" role="navigation">
+
+          <ul class="nav navbar-nav navbar-left">
+    
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-save-file"></i> Reportes<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" data-href="../reporte/informe_huespedes" class="enlace"><i class="glyphicon glyphicon-console"></i>Informe de Hospedados</a></li>
+            <li><a href="#" data-href="../reporte/habitacion" class="enlace"><i class="glyphicon glyphicon-console"></i>Informe de Habitaciones</a></li>
+            <li><a href="#" data-href="../reporte/productos" class="enlace"><i class="glyphicon glyphicon-console"></i>Informe de Productos</a></li>
+            <li class="divider"></li>
+            <li><a href="#" data-href="../informe/observaciones" class="enlace"><i class="glyphicon glyphicon-console"></i>Observaciones del dia</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-question-sign"></i> Ayuda<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#"><i class="glyphicon glyphicon-console"></i>Manual de usuario</a></li>
+            <li><a href="#"><i class="glyphicon glyphicon-console"></i>Sugerencias</a></li>
+            <li class="divider"></li>
+            <li><a href="#" data-toggle="modal" data-target="#modalAcerca"><i class="glyphicon glyphicon-console"></i>Acerca de</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> Roles<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+          	#foreach($r in $roles)
+            <li><a href="#" onclick="cambiar($r.cod_rol)"><i class="glyphicon glyphicon-console"></i>$r.nom_rol</a></li>
+            #end
+          </ul>
+        </li>
+      </ul>
+          <div class="navbar-custom-menu">
+          
+            <ul class="nav navbar-nav">
+              <!-- Messages: style can be found in dropdown.less-->
+              <li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" title="comunicados" data-toggle="dropdown">
+                  <i class="glyphicon glyphicon-envelope"></i>
+                  <span class="label label-warning">4</span>
+                </a>
+                
+                <ul class="dropdown-menu">
+                  <li class="header">Comunicados</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <li><!-- start message -->
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="../../img/fotos/user.png" class="img-circle" alt="User Image">
+                          </div>
+                          <h4>
+                            Usuario 1
+                            <small><i class="glyphicon glyphicon-facetime-video"></i> Hoy</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li><!-- end message -->
+                      <li>
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="../../img/fotos/user.png" class="img-circle" alt="User Image">
+                          </div>
+                          <h4>
+                            Usuario 2
+                            <small><i class="glyphicon glyphicon-facetime-video"></i> Hoy</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="../../img/fotos/user.png" class="img-circle" alt="User Image">
+                          </div>
+                          <h4>
+                            Usuario 3
+                            <small><i class="glyphicon glyphicon-facetime-video"></i> Hoy</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">Todos los mensajes</a></li>
+                </ul>
+              </li>
+              <!-- Notifications: style can be found in dropdown.less -->
+              <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" title="notificaciones" data-toggle="dropdown">
+                  <i class="glyphicon glyphicon-bell"></i>
+                  <span class="label label-warning">10</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">Tiene 10 notificaciones</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <li>
+                        <a href="#">
+                          <i class="glyphicon glyphicon-bell text-aqua"></i> 5 new members joined today
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="glyphicon glyphicon-bell text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="glyphicon glyphicon-bell text-red"></i> 5 new members joined
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="glyphicon glyphicon-bell text-green"></i> 25 sales made
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="glyphicon glyphicon-bell text-red"></i> You changed your username
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">View all</a></li>
+                </ul>
+              </li>
+              
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="../../img/fotos/user.png" class="user-image" alt="User Image">
+                  <span class="hidden-xs">$user.nom_per $user.priape_per</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                    <img src="../../img/fotos/user.png" class="img-circle" alt="User Image">
+                    <p>
+                      $user.nom_per $user.priape_per
+                      <small>$rol.nom_rol</small>
+                    </p>
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="#" class="btn btn-primary btn-flat"><i class="glyphicon glyphicon-user"></i> Perfil</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="../principal/salir" class="btn btn-danger btn-flat"><i class="glyphicon glyphicon-log-in"></i> Salir</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <!-- Control Sidebar Toggle Button -->
+              <li>
+                <a href="#" data-toggle="control-sidebar"><i class="glyphicon glyphicon-log-in"></i></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar sidebar-light">
+          <!-- Sidebar user panel -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img src="../../img/fotos/user.png" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+              <p>$user.nom_per $user.priape_per</p>
+              <a href="#"><i class="glyphicon glyphicon-certificate text-success"></i> En linea</a>
+            </div>
+          </div>
+
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu">
+            <li class="header">MENU DE NAVEGACION</li>
+           	#foreach($menu in $menus)
+				<li class="treeview">
+					<a href="#"> 
+						<i class="$menu.ico_men"></i>
+							<span>$menu.nom_men</span> 
+							<i class="fa fa-angle-left pull-right"></i>
+					</a> 
+				#if($menu.procesos.size()>0)
+					<ul class="treeview-menu">
+					#foreach($proceso in $menu.procesos)
+					<li>
+						<a href="#" data-href="$proceso.url_pro" class="enlace">
+							<i class="$proceso.ico_pro"></i> $proceso.nom_pro</a>
+					</li>
+					#end
+					</ul>
+				#end
+				</li> 
+			#end
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper bg-gray">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Sistema de Gestion y Control Hotelero
+            <small>Tarija, $fecha</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#" data-href="../principal/blanco" class="enlace"><i class="glyphicon glyphicon-align-justify"></i> Minimizar</a></li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" id="contenedor">
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      <footer class="main-footer bg-yellow">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 1.0
+        </div>
+        <strong>Copyright &copy; 2016-2017 <a href="#">Sistema de Gestion y Control Hotelero</a>.</strong> Tarija - Bolivia
+      </footer>
+    </div><!-- ./wrapper -->
+	<div  id="modalAcerca" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><span class="glyphicon glyphicon-tower"></span> Acerca del Sistema</h4>
+                  </div>
+                  <div class="modal-body">
+                  	<p>Sistema desarrollado en Tarija-Bolivia, por Ing. Carlos Franz Gutierrez G., potenciado con tecnologia java.</p>
+                  	<p>Desarrollado para la Gestion y Control hotelero, tomando en cuenta las reservas, control de limpieza, transacciones de compras/ventas, prestacion de servicios y la atencion a huespedes.</p>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/jquery.dataTables.min.js"></script>
+	<script src="../../js/dataTables.bootstrap.min.js"></script>
+	
+	<script src="../../js/formValidation.js"></script>
+	<script src="../../js/framework/bootstrap.min.js"></script>
+	<!-- 	chosen select -->
+	<script src="../../js/chosen.min.js"></script>
+	<script src="../../js/es_ES.js"></script>
+	<!-- 	notificaciones -->
+	<script type="text/javascript" src="../../js/pnotify.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery.loadJSON.js"></script>
+	<script src="../../js/jquery.inputmask.js"></script>
+	<script src="../../js/jquery.inputmask.date.extensions.js"></script>
+	<script src="../../js/jquery.inputmask.extensions.js"></script>
+  <script>
+  
+  var AdminLTEOptions = {
+		    sidebarExpandOnHover: true
+		  };
+  var notificacion=new PNotify({
+      title: 'Materni System',
+      text: '$!{msg}, al Sistema de Gestion y Control Hotelero',
+      type: 'yellow',
+      delay: 5000,
+      stack: {
+          "dir1": "down", 
+          "dir2": "left", 
+          "firstpos1": 500, 
+          "firstpos2": 25
+      }
+  });
+	function mostrarMensaje(tipo,msg){
+		var notificacion=new PNotify({
+	        title: 'Hotel | System',
+	        text: msg,
+	        type: tipo,
+	        delay: 1000,
+	        stack: {
+	            "dir1": "down", 
+	            "dir2": "left", 
+	            "firstpos1": 500, 
+	            "firstpos2": 25
+	        }
+	    });
+		notificacion;
+	}
+  $(document).ready(function(){
+		$(".enlace").click(function(){
+			$.post($(this).data("href"), function(resp) {
+			$("#contenedor").html(resp);
+  			});
+		});
+		$("#cambiar").click(function(){console.log($(this).data("href")+$(this).data("id"));
+			
+		});
+  });
+  function cambiar(codigo){
+	  location.href='../principal/cambiarRol?cod_rol='+codigo;
+  }
+</script>
+    <script src="../../js/app.min.js"></script>
+  </body>
+</html>

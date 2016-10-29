@@ -1,0 +1,255 @@
+<!-- Default box -->
+          <div class="box">
+            <div class="box-header with-border">
+            <span class="fa fa-cubes"></span>
+            <form id="formulario"  method="post" action="../etnia/guardar"
+              	data-fv-framework="bootstrap"
+              	data-fv-excluded="disabled"
+    			data-fv-icon-valid="glyphicon glyphicon-ok"
+    			data-fv-icon-invalid="glyphicon glyphicon-remove"
+    			data-fv-icon-validating="glyphicon glyphicon-refresh">
+            <div  id="modalAdicionar" class="modal fade">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Adicionar Etnia</h4>
+                  </div>
+                  <div class="modal-body">
+                  <div class="form-group">
+                      <label>Nombre</label>
+                      <input type="text" class="form-control" id="nombre" name="nombre" data-fv-notempty="true">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                  	<button type="button" class="btn btn-social btn-google" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i> Regresar</button>
+                    <button type="button" id="btnAdicionarConfirmacion" class="btn btn-social btn-bitbucket"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div id="modalAdicionarConfirmacion" class="modal modal-primary fade">
+  			<div class="modal-dialog modal-sm"  role="document">
+    			<div class="modal-content">
+      			<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        			<h4 class="modal-title" id="myModalLabel"><span class="fa fa-chevron-circle-right"></span> Mensaje de Confirmacion</h4>
+      			</div>
+      			<div class="modal-body">
+      				<label>¿Esta seguro de realizar esta transaccion?</label>
+				</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-social btn-google" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i> Cancelar</button>
+        			<button type="submit" class="btn btn-social btn-bitbucket"><i class="glyphicon glyphicon-ok-sign"></i> Aceptar</button>
+      			</div>
+    			</div>
+  			</div>
+			</div>
+			</form>
+			<form id="formularioModificarEliminar"  method="post" action="../etnia/actualizar"
+              	data-fv-framework="bootstrap"
+              	data-fv-excluded="disabled"
+    			data-fv-icon-valid="glyphicon glyphicon-ok"
+    			data-fv-icon-invalid="glyphicon glyphicon-remove"
+    			data-fv-icon-validating="glyphicon glyphicon-refresh">
+            <div  id="modalModificarEliminar" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modificar o Eliminar Etnia</h4>
+                  </div>
+                  <div class="modal-body">
+                  	<input type="hidden" id="id" name="id" />
+                  	<div class="form-group">
+                      <label>Nombre</label>
+                      <input type="text" class="form-control" id="nombre" name="nombre" data-fv-notempty="true">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                  	<button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Regresar</button>
+                  	<button type="button" id="btnEliminarConfirmacion" class="btn btn-social btn-google"><i class="glyphicon glyphicon-remove-sign"></i> Inhabilitar</button>
+                    <button type="button" id="btnModificarConfirmacion" class="btn btn-social btn-bitbucket"><i class="glyphicon glyphicon-floppy-disk"></i> Actualizar</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div id="modalModificarConfirmacion" class="modal modal-primary fade">
+  			<div class="modal-dialog modal-sm"  role="document">
+    			<div class="modal-content">
+      			<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        			<h4 class="modal-title" id="myModalLabel"><span class="fa fa-chevron-circle-right"></span> Mensaje de Confirmacion</h4>
+      			</div>
+      			<div class="modal-body">
+      				<label>¿Esta seguro de modificar este registro?</label>
+				</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-social btn-google" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i> Cancelar</button>
+        			<button type="submit" class="btn btn-social btn-bitbucket"><i class="glyphicon glyphicon-ok-sign"></i> Aceptar</button>
+      			</div>
+    			</div>
+  			</div>
+			</div>
+			<div id="modalEliminarConfirmacion" class="modal modal-danger fade">
+  			<div class="modal-dialog modal-sm"  role="document">
+    			<div class="modal-content">
+      			<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        			<h4 class="modal-title" id="myModalLabel"><span class="fa fa-chevron-circle-right"></span> Mensaje de Confirmacion</h4>
+      			</div>
+      			<div class="modal-body">
+      				<label>¿Esta seguro de eliminar este registro?</label>
+				</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-social btn-google" data-dismiss="modal"><i class="glyphicon glyphicon-remove-sign"></i> Cancelar</button>
+        			<button type="button" id="btnEliminar" value="" class="btn btn-social btn-bitbucket"><i class="glyphicon glyphicon-ok-sign"></i> Aceptar</button>
+      			</div>
+    			</div>
+  			</div>
+			</div>
+			</form>
+			<div id="modalValidar" class="modal fade">
+  			<div class="modal-dialog"  role="document">
+    			<div class="modal-content" align="center">
+      			<div class="modal-header" >
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        			<h1 style="font-size: 150px;">
+        				<span class="glyphicon glyphicon-remove-circle"></span>
+        			</h1>
+        			<h4 class="modal-title" id="myModalLabel">Error</h4>
+      			</div>
+      			<div class="modal-body">
+      				<label><b id="nombreLabel"></b>,esta registrado. Use otro nombre.</label>
+				</div>
+      			<div class="modal-footer">
+        			<button type="button" class="btn btn-primary" data-dismiss="modal">Continuar</button>
+      			</div>
+    			</div>
+  			</div>
+			</div>
+              <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+            <div class="row">
+            	<div class="col-md-8">
+            		<h1 class="pull-left"><span class="fa  fa-ellipsis-v"></span> Gestion Etnia </h1>
+            	</div>
+            	<div class="col-md-4">
+            		<div class="btn-group pull-right">
+						<br><label class="btn btn-primary active estadoRadio"> <input type="radio" name="estado" value="true"  data-toggle="tooltip" data-placement="top" title="Mostrar Activos" checked> Activos
+						</label> <label class="btn btn-danger estadoRadio"  data-toggle="tooltip" data-placement="top" title="Mostrar Inactivos"> <input type="radio" name="estado" value="false"> Inactivos
+						</label>
+					</div>
+            	</div>
+            </div>
+             <table id="tabla" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Etnia</th>
+                        <th>Personas</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                  </table>
+            </div><!-- /.box-body -->
+          </div><!-- /.box -->
+          <script>
+      $(document).ready(function(){
+    	  var selected=[];
+    	  $('select').chosen({no_results_text : "No se encuentra:",width : '100%'});
+    	  $('#btnAdicionarConfirmacion').click(function(){
+  			$('#modalAdicionarConfirmacion').modal('show');
+  		});
+        $('#btnModificarConfirmacion').click(function(){
+        	$('#modalModificarConfirmacion').modal('show');
+        });
+		$('#btnEliminarConfirmacion').click(function(){
+			$('#modalEliminarConfirmacion').modal('show');
+  		});
+  		$('#tabla').dataTable( {
+  			dom:"<'row'<'col-sm-3'f><'col-sm-2'B><'col-sm-2'l><'col-sm-5'i>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+			buttons: [
+				{
+					text:'<span class="fa fa-plus-circle"></span> Adicionar <span class="fa fa-plus-circle"></span>',
+					className:"btn btn-success",
+					action:function(e,dt,node,config){
+						$('#formulario')[0].reset();
+						$('#formulario').data('formValidation').resetForm();
+						$('#modalAdicionar').modal('show');
+					}
+				}
+			],
+			"ordering":false,
+  			"oLanguage": {
+                "sUrl": "../../js/Spanish.lang"
+            },
+  			"processing": true,
+  		    "serverSide": true,
+  		    "ajax": {
+  		    	"type": "POST",
+  	            "url": "../etnia/lista",
+  	        	"data": function ( d ) {
+  	                d.estado = $('input[name=estado]:checked').val();
+  	            }
+          	},
+  		    "columns": [
+  		                { "data": "nombre" },
+  		                { "data": "etnias" }
+  		    ]
+  		});
+  		$('#tabla tbody').on('click','tr',function(){
+  			$('#formularioModificarEliminar')[0].reset();
+  			var data=$('#tabla').DataTable().row(this).data();
+			$('#modalModificarEliminar').modal('show');
+			$('#formularioModificarEliminar').loadJSON(data);
+			$('#btnEliminar').val(data.id);
+  		});
+  		$('.estadoRadio').click(function(){
+  			$('#tabla').dataTable().fnDraw('page');
+  		});
+  		$('#btnEliminar').click(function(){
+  			$.post('../etnia/eliminar?id='+$(this).val(), function(result) {
+              	if(result.status==true){
+   	    	 		$('.modal').modal('hide');
+      	        	$('#tabla').dataTable().fnDraw('page');
+      	        	mostrarMensaje('info','Se realizo con exito la Transacción');
+      	        }else{
+              		mostrarMensaje('error','No se realizo con exito la Transacción');
+              	}
+      	    }, 'json');
+  		});
+  		$('#formulario,#formularioModificarEliminar').formValidation(
+  				{locale: 'es_ES'}).on('success.form.fv', function(e) {
+              e.preventDefault();
+              var $form = $(e.target);
+              $.post($form.attr('action'), $form.serialize(), function(result) {
+              	if(result.status==true){
+      	            $form.data('formValidation').resetForm();
+   	    	 		$('.modal').modal('hide');
+      	        	$('#tabla').dataTable().fnDraw('page');
+      	        	mostrarMensaje('info','Se realizo con exito la Transacción');
+      	        }else{
+              		mostrarMensaje('error','No se realizo con exito la Transacción');
+              	}
+              	waitingDialog.hide();
+      	    }, 'json');
+          });
+  		$('#nombre').blur(function(){
+  			var nombre=$(this).val();
+  			$.post('../etnia/validar?nombre='+nombre, function(result) {
+              	if(result.status==true){
+              		$('#nombreLabel').html(nombre);
+   	    	 		$('#nombre').val('');
+   	    	 		$('#modalValidar').modal('show');
+   	    	 		$('#formulario').data('formValidation').resetForm();
+      	        }
+      	    }, 'json');
+  		});
+  	});
+    </script>

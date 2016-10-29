@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HotelSystem</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/AdminLTE.min.css">
+	<link href="../../css/pnotify.min.css" media="all" rel="stylesheet" type="text/css" />
+
+<meta name="msapplication-TileColor" content="#333333">
+<meta name="theme-color" content="#333333">
+  </head>
+  <body class="hold-transition login-page">
+    <hr/>
+    <div class="row">
+    	<div class="col-md-1"></div>
+    	<div class="col-md-7">
+			<div id="carousel-example-generic" class="carousel slide"
+				data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0"
+						class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"
+						class=""></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"
+						class=""></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="../../img/general/slider1.jpg" alt="First slide">
+						<div class="carousel-caption"></div>
+					</div>
+					<div class="item">
+						<img src="../../img/general/slider2.jpg" alt="Second slide">
+						<div class="carousel-caption"></div>
+					</div>
+					<div class="item">
+						<img src="../../img/general/slider3.jpg" alt="Third slide">
+						<div class="carousel-caption"></div>
+					</div>
+				</div>
+				<a class="left carousel-control" href="#carousel-example-generic"
+					data-slide="prev"> <span class="fa fa-angle-left"></span>
+				</a> <a class="right carousel-control" href="#carousel-example-generic"
+					data-slide="next"> <span class="fa fa-angle-right"></span>
+				</a>
+			</div>
+		</div>
+    	<div class="col-md-3">
+    	<img alt="" src="../../img/general/banner.png">
+			<h3 align="center" style="color: white;">Acceso al Sistema</h3>
+			<form action="../principal/validar" method="post">
+
+				<div class="form-group has-feedback">
+					<input type="password" id="login" name="login" class="form-control"
+						placeholder="Login"> <span
+						class="glyphicon glyphicon-user form-control-feedback"></span>
+				</div>
+				<br>
+				<br>
+				<div class="form-group has-feedback">
+					<input type="password" id="password" name="password"
+						class="form-control" placeholder="Contraseña"> <span
+						class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-lg-12">
+						<button type="submit"
+							class="btn btn-lg btn-primary btn-block btn-flat">Ingresar</button>
+					</div>
+					<!-- /.col -->
+				</div>
+			</form>
+		</div>
+    </div>
+ <hr>
+ <div align="center" style="color:white;margin: auto;float: none;">
+ 	<h1><span class="glyphicon glyphicon-fire"></span></h1>
+ 	<b>Version 1.0</b><br>
+ 	<strong class="">Copyright &copy; 2016-2017 <a href="#">Sistema de Gestion y Control Hotelero</a>.</strong> Tarija - Bolivia
+ </div>
+
+    <!-- jQuery 2.1.4 -->
+    <script src="../../js/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../../js/bootstrap.min.js"></script>
+    <!-- 	notificaciones -->
+	<script type="text/javascript" src="../../js/pnotify.js"></script>
+    <script>
+      $(function () {
+
+        #if($!{msg})
+        var notificacion=new PNotify({
+	        title: 'Hotel System',
+	        text: '$!{msg}',
+	        type: 'info',
+	        delay: 5000,
+	        stack: {
+	            "dir1": "down", 
+	            "dir2": "left", 
+	            "firstpos1": 550, 
+	            "firstpos2": 25
+	        }
+	    });
+        #end
+      });
+    </script>
+  </body>
+</html>

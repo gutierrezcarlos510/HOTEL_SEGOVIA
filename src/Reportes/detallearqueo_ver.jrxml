@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="detallearqueo_ver" pageWidth="215" pageHeight="700" whenNoDataType="AllSectionsNoDetail" columnWidth="185" leftMargin="20" rightMargin="10" topMargin="1" bottomMargin="20" uuid="82b9b79f-a2f2-4a16-a689-7c3e406eae1c">
+	<property name="ireport.zoom" value="3.4522712143931042"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="101"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\CARLOS\\workspace\\resultadofinal\\src\\Reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cod_arqcaj" class="java.lang.Integer"/>
+	<parameter name="subrep" class="java.lang.String"/>
+	<parameter name="usuario" class="java.lang.String"/>
+	<parameter name="des_gen" class="java.lang.String"/>
+	<parameter name="dir_gen" class="java.lang.String"/>
+	<parameter name="tel_gen" class="java.lang.String"/>
+	<parameter name="lug_gen" class="java.lang.String"/>
+	<parameter name="cod_detarq" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select * from detallearqueo_obtener($P{cod_detarq},$P{cod_arqcaj})]]>
+	</queryString>
+	<field name="cod_arqcaj" class="java.lang.Integer">
+		<fieldDescription><![CDATA[codigo de arqueo]]></fieldDescription>
+	</field>
+	<field name="cod_detarq" class="java.lang.Integer"/>
+	<field name="tip_detarq" class="java.lang.Integer">
+		<fieldDescription><![CDATA[tipo, 1=egreso de caja, 2=pago a ayudante de inscripcion, 3=pago a ayudante de prestacion, 4=compra, 5=ingreso a caja, 6=ingreso de inscripcion, 7= ingreso de prestacion, 8=ingreso de ventas]]></fieldDescription>
+	</field>
+	<field name="des_detarq" class="java.lang.String">
+		<fieldDescription><![CDATA[descripcion de arqueo]]></fieldDescription>
+	</field>
+	<field name="mon_detarq" class="java.lang.Float">
+		<fieldDescription><![CDATA[monto de arqueo]]></fieldDescription>
+	</field>
+	<field name="fec_detarq" class="java.sql.Timestamp"/>
+	<field name="est_detarq" class="java.lang.Boolean"/>
+	<variable name="tipo" class="java.lang.String">
+		<variableExpression><![CDATA[$F{tip_detarq}==1?"Egreso de Caja.":$F{tip_detarq}==2?"Pago al ayudante por inscripcion.":$F{tip_detarq}==3?"Pago al ayudante por prestacion.":$F{tip_detarq}==4?"Por compra de productos.":$F{tip_detarq}==5?"Ingrso a caja.":$F{tip_detarq}==6?"Ingreso por inscripcion de estudiante.":$F{tip_detarq}==7?"Ingreso por prestacion de servicio.":"Ingreso de ventas de productos."]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{tip_detarq}==1?"Egreso de Caja.":$F{tip_detarq}==2?"Pago al ayudante por inscripcion.":$F{tip_detarq}==3?"Pago al ayudante por prestacion.":$F{tip_detarq}==4?"Por compra de productos.":$F{tip_detarq}==5?"Ingrso a caja.":$F{tip_detarq}==6?"Ingreso por inscripcion de estudiante.":$F{tip_detarq}==7?"Ingreso por prestacion de servicio.":"Ingreso de ventas de productos."]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="52" width="134" height="13" forecolor="#FF0000" uuid="642243d4-f0c2-4757-9a30-4c1c8d43b787"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Detalle Arqueo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="65" width="134" height="15" forecolor="#FF0000" uuid="ee101cd9-bf54-4cd3-bf89-e9c15ab8a092"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Codigo de Arqueo "+$F{cod_arqcaj}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="26" width="134" height="13" forecolor="#FF0000" uuid="558afa5e-d7cd-4636-81a2-8d7174e37322"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tel_gen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="13" width="134" height="13" forecolor="#FF0000" uuid="ac7c796d-73ef-4d9d-9f40-0a77378b2cf8"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dir_gen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="134" height="13" forecolor="#FF0000" uuid="e54e4b3f-908c-4ce8-8944-9f2d9c49042f"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{des_gen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="39" width="134" height="13" forecolor="#FF0000" uuid="a751c7f0-a0b0-4427-955e-7578aa10c114"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lug_gen}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="32" height="12" uuid="d0143aa7-9486-493c-ac43-7e4b248b3f2a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="0" width="67" height="12" uuid="cdb29e38-06c8-4bec-9f43-b42f665906eb"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fec_detarq}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="99" y="0" width="18" height="12" uuid="83377334-e8ee-4c37-b4fe-d464c041365e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cod :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="117" y="0" width="17" height="12" uuid="f9057fff-980a-4367-ac21-077b041bc558"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_detarq}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="12" width="134" height="12" uuid="5df1a06e-882e-48b4-847b-beea3cce9181"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tipo : "+$V{tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="36" width="134" height="36" uuid="6aca4f99-2ff5-4cd5-a4df-bbc9a8b5f201"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Descripcion : "+$F{des_detarq}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="24" width="134" height="12" uuid="d8260a30-0d82-41ee-8483-b3886d40a82b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Monto : "+$F{mon_detarq}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="134" height="12" forecolor="#FF0000" uuid="5e0a31bc-b43d-4a70-beb8-a935650eab55"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Usuario :"+$P{usuario}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="32" y="12" width="94" height="12" forecolor="#FF0000" uuid="1f501f24-79a9-444c-8f59-251b86660226"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="12" width="32" height="12" forecolor="#FF0000" uuid="7126d6d5-c9d4-4b0e-af2a-08f8cccf7781"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha : ]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
