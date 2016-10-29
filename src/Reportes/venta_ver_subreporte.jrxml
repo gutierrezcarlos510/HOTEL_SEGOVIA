@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="venta_ver_subreporte" pageWidth="164" pageHeight="500" columnWidth="164" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="dea03c5e-e608-4769-96b4-d5c685a3493f">
+	<property name="ireport.zoom" value="3.797498335832416"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod_ven" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[select * from detalleventa_obtener($P{cod_ven}) as (cod_ven bigint,cod_detven integer,cod_pro integer,pre_detven real,can_detven integer,des_detven real,producto varchar(150))]]>
+	</queryString>
+	<field name="cod_ven" class="java.lang.Long"/>
+	<field name="cod_detven" class="java.lang.Integer"/>
+	<field name="cod_pro" class="java.lang.Integer"/>
+	<field name="pre_detven" class="java.lang.Float"/>
+	<field name="can_detven" class="java.lang.Integer"/>
+	<field name="des_detven" class="java.lang.Float"/>
+	<field name="producto" class="java.lang.String"/>
+	<variable name="total" class="java.lang.Float">
+		<variableExpression><![CDATA[($F{pre_detven}*$F{can_detven})-$F{des_detven}]]></variableExpression>
+	</variable>
+	<variable name="descuento" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{des_detven}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="130" height="12" uuid="d46050cc-5a50-435d-a7bf-4a7636baf49b"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{producto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="34" y="12" width="24" height="12" uuid="fcd407c2-00eb-43ec-9268-8745188e6c93"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{can_detven}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="58" y="12" width="24" height="12" uuid="2eec375d-3ec5-4f14-be2c-b8351de9d6ca"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pre_detven}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="106" y="12" width="24" height="12" uuid="4de7ac1a-0fd8-451d-bf2a-6378318be66e"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="82" y="12" width="24" height="12" uuid="82999f85-72d3-4741-ab6c-762569e1fb54"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{des_detven}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
