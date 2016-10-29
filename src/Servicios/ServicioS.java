@@ -30,7 +30,7 @@ public class ServicioS extends Db_Coneccion{
 	public List<Map<String, Object>> listar(int start,boolean estado,String search,int length){
 		if(search==null)search="";
 		try{
-			return db.queryForList("select * from servicio_lista(?,?,?,?)",start,length,search,estado);
+			return db.queryForList("select * from servicio_lista(?,?,?,?)"+as_object_add(as_servicio, "RN bigint,Tot int"),start,length,search,estado);
 		}catch(Exception e){
 			System.out.println("error listarServicio"+e.toString());
 			return null;
@@ -38,7 +38,7 @@ public class ServicioS extends Db_Coneccion{
 	}
 	public Map<String, Object> obtener(int cod_ser){
 		try {
-			return db.queryForMap("select * from servicio_obtener(?)",cod_ser);
+			return db.queryForMap("select * from servicio_obtener(?)"+as_servicio,cod_ser);
 		} catch (Exception e) {
 			System.out.println("error obtenerServicio"+e.toString());
 			return null;

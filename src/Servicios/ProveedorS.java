@@ -27,7 +27,7 @@ public class ProveedorS extends Db_Coneccion{
 	public List<Map<String, Object>> listar(int start,boolean estado,String search,int length){
 		if(search==null)search="";
 		try{
-			return db.queryForList("select * from proveedor_lista(?,?,?,?)",start,length,search,estado);
+			return db.queryForList("select * from proveedor_lista(?,?,?,?)"+as_object_add(as_proveedor, "RN bigint,Tot int"),start,length,search,estado);
 		}catch(Exception e){
 			System.out.println("error listarProveedor"+e.toString());
 			return null;
@@ -35,7 +35,7 @@ public class ProveedorS extends Db_Coneccion{
 	}
 	public Map<String, Object> obtener(int cod_pro){
 		try {
-			return db.queryForMap("select * from proveedor_obtener(?)",cod_pro);
+			return db.queryForMap("select * from proveedor_obtener(?)"+as_proveedor,cod_pro);
 		} catch (Exception e) {
 			System.out.println("error obtenerProveedor"+e.toString());
 			return null;

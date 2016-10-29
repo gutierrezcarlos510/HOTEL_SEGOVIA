@@ -29,7 +29,7 @@ public class ModeloS extends Db_Coneccion{
 	public List<Map<String, Object>> listar(int start,boolean estado,String search,int length){
 		if(search==null)search="";
 		try{
-			return db.queryForList("select * from modelo_lista(?,?,?,?)",start,length,search,estado);
+			return db.queryForList("select * from modelo_lista(?,?,?,?)"+as_object_add(as_modelo, "RN bigint,Tot int"),start,length,search,estado);
 		}catch(Exception e){
 			System.out.println("error listarModelo"+e.toString());
 			return null;
@@ -37,7 +37,7 @@ public class ModeloS extends Db_Coneccion{
 	}
 	public Map<String, Object> obtener(int cod_mod){
 		try {
-			return db.queryForMap("select * from modelo_obtener(?)",cod_mod);
+			return db.queryForMap("select * from modelo_obtener(?)"+as_modelo,cod_mod);
 		} catch (Exception e) {
 			System.out.println("error obtenerModelo"+e.toString());
 			return null;

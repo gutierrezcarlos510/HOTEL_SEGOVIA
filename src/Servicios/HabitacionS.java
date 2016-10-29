@@ -31,7 +31,7 @@ public class HabitacionS extends Db_Coneccion{
 	public List<Map<String, Object>> listar(int start,boolean estado,String search,int length){
 		if(search==null)search="";
 		try{
-			return db.queryForList("select * from habitacion_lista(?,?,?,?)",start,length,search,estado);
+			return db.queryForList("select * from habitacion_lista(?,?,?,?)"+as_object_add(as_habitacion, "RN bigint,Tot int"),start,length,search,estado);
 		}catch(Exception e){
 			System.out.println("error listarHabitacion"+e.toString());
 			return null;
@@ -39,7 +39,7 @@ public class HabitacionS extends Db_Coneccion{
 	}
 	public Map<String, Object> obtener(int cod_tiphab){
 		try {
-			return db.queryForMap("select * from habitacion_obtener(?)",cod_tiphab);
+			return db.queryForMap("select * from habitacion_obtener(?)"+as_habitacion,cod_tiphab);
 		} catch (Exception e) {
 			System.out.println("error obtenerHabitacion"+e.toString());
 			return null;

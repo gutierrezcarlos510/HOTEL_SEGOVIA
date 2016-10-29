@@ -32,7 +32,7 @@ public class ProductoS extends Db_Coneccion{
 	public List<Map<String, Object>> listar(int start,boolean estado,String search,int length){
 		if(search==null)search="";
 		try{
-			return db.queryForList("select * from producto_lista(?,?,?,?)",start,length,search,estado);
+			return db.queryForList("select * from producto_lista(?,?,?,?)"+as_object_add(as_producto, "RN bigint,Tot int"),start,length,search,estado);
 		}catch(Exception e){
 			System.out.println("error listarProducto"+e.toString());
 			return null;
@@ -40,7 +40,7 @@ public class ProductoS extends Db_Coneccion{
 	}
 	public Map<String, Object> obtener(int cod_pro){
 		try {
-			return db.queryForMap("select * from producto_obtener(?)",cod_pro);
+			return db.queryForMap("select * from producto_obtener(?)"+as_producto,cod_pro);
 		} catch (Exception e) {
 			System.out.println("error obtenerProducto"+e.toString());
 			return null;
