@@ -1,11 +1,8 @@
 package Servicios;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import org.springframework.stereotype.Service;
 
 import Modelos.Servicio;
@@ -13,20 +10,7 @@ import Utiles.Db_Coneccion;
 import Utiles.Letra;
 @Service
 public class ServicioS extends Db_Coneccion{
-	public class a_objeto implements ParameterizedRowMapper<Servicio>{
-		@Override
-		public Servicio mapRow(ResultSet set, int fila) throws SQLException {
-			Servicio s=new Servicio();
-			s.setCod_ser(set.getInt("cod_ser"));
-			s.setNom_ser(set.getString("nom_ser"));
-			s.setDes_ser(set.getString("des_ser"));
-			s.setCod_tipser(set.getInt("cod_tipser"));
-			s.setEst_ser(set.getBoolean("est_ser"));
-			s.setPre_ser(set.getFloat("pre_ser"));
-			return s;
-		}
-	}
-	
+
 	public List<Map<String, Object>> listar(int start,boolean estado,String search,int length){
 		if(search==null)search="";
 		try{
